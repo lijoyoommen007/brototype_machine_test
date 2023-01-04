@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination } from "react-table"
+import { useTable, useSortBy, useGlobalFilter, useFilters, usePagination, useColumnOrder } from "react-table"
 import MOCK_DATA from "../components/MOCK_DATA.json"
 import { COLUMNS1, COLUMNS2 } from '../components/Columns'
 import "../components/table.css"
@@ -26,8 +26,17 @@ export const BasicTable = ( props ) => {
 
     const handleClick=()=>{
                 window.location.reload(false);
-            }
+    }
         
+    function shuffle(arr) {
+        arr = [...arr]
+        const shuffled = []
+        while (arr.length) {
+          const rand = Math.floor(Math.random() * arr.length)
+          shuffled.push(arr.splice(rand, 1)[0])
+        }
+        return shuffled
+      }  
     
 
 
@@ -50,13 +59,23 @@ export const BasicTable = ( props ) => {
         pageOptions,
         gotoPage,
         pageCount,
-        setPageSize
+        setPageSize,
+        setColumnOrder,
+        visibleColumns
     } = useTable({
         columns,
         data,
-    },useFilters,useGlobalFilter,useSortBy,usePagination)
+    },useColumnOrder,useFilters,useGlobalFilter,useSortBy,usePagination)
 
     const {globalFilter, pageIndex, pageSize} = state
+
+
+    const randomizeColumns = () => {
+        setColumnOrder(shuffle(visibleColumns.map(d => d.id)))
+    }     
+
+ 
+
 
   return (
     <>
@@ -66,6 +85,14 @@ export const BasicTable = ( props ) => {
            <button style={{position:"absolute", top:"-15px",right:"10px" }} onClick={()=>handleClick()}>  <RefreshIcon style={{fontSize:"2rem"}}/> Click To Refresh </button>
         </div>
         :""}
+        
+        {props.screen == "screen1"?
+        <div className='relative'>
+           <button style={{position:"absolute", top:"-15px",left:"10px" }} onClick={()=>randomizeColumns({})}>  <RefreshIcon style={{fontSize:"2rem"}}/> Click To Refresh Column </button>
+        </div>
+        :""}
+
+
     {props.screen != "screen1" ? <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />:null }
     
     <table {...getTableProps()} className="mt-5">

@@ -1,12 +1,12 @@
 import {format} from 'date-fns'
 import { ColumnFilter } from './ColumnFilter'
-
+import SliderColumnFilter from './SliderColumnFilter'
 export const COLUMNS1 =[
     {
         Header:"Id",
         accessor:"id",
         Footer:"Id",
-        Filter:ColumnFilter
+        Filter:ColumnFilter 
     },
     {
         Header:"First Name",
@@ -38,7 +38,7 @@ export const COLUMNS1 =[
         Header:"Age",
         accessor:"Age",
         Footer:"Age",
-        Filter:ColumnFilter
+        Filter:SliderColumnFilter
     }
 ]
 
