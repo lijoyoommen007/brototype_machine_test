@@ -22,6 +22,7 @@ import React from 'react'
           <>
             <input
               type="range"
+              style={{color:"red"}}
               min={min}
               max={max}
               value={filterValue || min}

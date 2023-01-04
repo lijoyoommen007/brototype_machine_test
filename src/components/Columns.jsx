@@ -1,6 +1,6 @@
 import {format} from 'date-fns'
-import { ColumnFilter } from './ColumnFilter'
-import SliderColumnFilter from './SliderColumnFilter'
+import { ColumnFilter } from './FilterComponent/ColumnFilter'
+import SliderColumnFilter from './FilterComponent/SliderColumnFilter'
 export const COLUMNS1 =[
     {
         Header:"Id",

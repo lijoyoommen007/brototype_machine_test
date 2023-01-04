@@ -7,7 +7,7 @@ import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
-import { GlobalFilter } from '../components/GlobalFilter'
+import { GlobalFilter } from '../components/FilterComponent/GlobalFilter'
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Navbar from '../components/Navbar'
 export const BasicTable = ( props ) => {
